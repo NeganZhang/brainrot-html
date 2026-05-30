@@ -81,6 +81,13 @@
   .nav:active{transform:scale(.985)}
   .nav.active{background:var(--bg-elev-2)}
   .nav .ico{color:var(--t-2)}
+  .workspace-switch{height:54px;margin-bottom:5px;border:1px solid #343434;background:#202020;border-radius:10px;color:var(--t-hi);display:grid;grid-template-columns:36px 1fr 16px;align-items:center;gap:10px;padding:8px 10px;cursor:pointer;text-align:left;transition:background .12s,border-color .12s}
+  .workspace-switch:hover{background:#242424;border-color:#444}
+  .workspace-badge{width:32px;height:32px;border-radius:7px;background:linear-gradient(#454545,#2c2c2c);border:1px solid #5a5a5a;display:grid;place-items:center;color:#f3f3f3;font-weight:700;font-size:13px}
+  .workspace-main{min-width:0}
+  .workspace-name{font-size:13.5px;font-weight:600;color:var(--t-hi);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .workspace-sub{font-size:12px;color:var(--t-3);line-height:1.2;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .workspace-switch .ico{color:var(--t-3)}
   .msg-nav{background:transparent;color:var(--t);font-size:13.5px;font-weight:400}
   .msg-nav:hover{background:#2a2d31}
   .msg-ico{position:relative;width:17px;height:17px;display:grid;place-items:center;flex:none}
@@ -431,8 +438,14 @@
     <!-- sidebar -->
     <aside class="side">
       <div class="side-top">
+        <button class="workspace-switch" id="workspaceSwitch">
+          <span class="workspace-badge">11</span>
+          <span class="workspace-main"><span class="workspace-name">11</span><span class="workspace-sub">工作区</span></span>
+          <svg class="ico sm" viewBox="0 0 24 24"><path d="M8 10l4-4 4 4M16 14l-4 4-4-4"/></svg>
+        </button>
         <button class="nav" id="newChat"><svg class="ico" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>新对话</button>
         <button class="nav" id="openSearch"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>搜索</button>
+        <button class="nav" id="openAgents"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>Agents</button>
         <button class="nav" id="openMarket"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Market Place</button>
         <button class="nav msg-nav" id="openMessages">
           <span class="msg-ico"><svg class="ico" viewBox="0 0 24 24"><path d="M21 4.5 10.5 21l-2.3-8.2L3 10.7Z"/><path d="M8.2 12.8 21 4.5"/></svg><span class="msg-badge">1</span></span>
@@ -1047,6 +1060,8 @@ document.getElementById('navFwd').addEventListener('click',()=>toast('没有更�
 // new chat + search
 document.getElementById('newChat').addEventListener('click',()=>{showHome();document.getElementById('homeInput').focus();});
 document.getElementById('openSearch').addEventListener('click',openSearch);
+document.getElementById('workspaceSwitch').addEventListener('click',()=>toast('切换工作区'));
+document.getElementById('openAgents').addEventListener('click',()=>toast('Agents'));
 document.getElementById('openMarket').addEventListener('click',showMarket);
 document.getElementById('openMessages').addEventListener('click',showMessages);
 document.getElementById('floatingMessages').addEventListener('click',showMessages);
